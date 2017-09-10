@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animals", "Animals\Animals.csproj", "{96431F31-A4BD-4DF3-A519-EF3A599A10A3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalGameClass", "AnimalGameClass\AnimalGameClass.csproj", "{46FBE41D-9C29-4A95-8DA9-A421D5BD3507}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{96431F31-A4BD-4DF3-A519-EF3A599A10A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96431F31-A4BD-4DF3-A519-EF3A599A10A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96431F31-A4BD-4DF3-A519-EF3A599A10A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46FBE41D-9C29-4A95-8DA9-A421D5BD3507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46FBE41D-9C29-4A95-8DA9-A421D5BD3507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46FBE41D-9C29-4A95-8DA9-A421D5BD3507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46FBE41D-9C29-4A95-8DA9-A421D5BD3507}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

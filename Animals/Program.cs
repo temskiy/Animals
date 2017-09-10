@@ -1,134 +1,65 @@
 ﻿//По мотивам игры "Животные" из журнала "Наука и жизнь" №12 за 1986г.
 using System;
+using AnimalGameClass;
 
 namespace Animals
 {
-    class Program
+    class Program: IAnimal
     {
         static string[] b;
         static string[] o;
         static string[] p;
-        private static string oo, pp, aa = "";
-        static int i =0;
-        private static bool _exit = false;
+        static AniamlGameClass game;
 
-        static void Main()
+        private static void Main()
         {
             b = new string[2000];
             o = new string[2000];
             p = new string[2000];
-
-            do
-            {
-                InitGame();
-                while (!TryAndWaitAnswer(o[i]))
-                {
-                    do
-                    {
-                        f3();
-                        if (i == 0)
-                        {
-                            i = 1;
-
-                        }
-                        else
-                        {
-                            f4();
-                        }
-
-                        if (b[i] == null)
-                        {
-                            f10();
-                            _exit = true;
-                            break;
-
-                        }
-
-                    } while (f6());
-                    if (_exit) { break;}
-                }
-                _exit = false;
-
-            } while (TryAgain());
-        }
-
-        private static void InitGame()
-        {
-            i = 0;
-            o[i] = "Кот";
-        }
-
-        private static bool TryAndWaitAnswer(string animal)
-        {
-            Console.WriteLine("Это " + animal + ", да?");
-            var readLine = Console.ReadLine();
-            return readLine.ToLower() == "да";
+            game = new AnimalGameClass.AniamlGameClass();
+            game.Start();
 
         }
 
-        private static bool TryAgain()
+        public void Print(string message)
         {
-            Console.WriteLine("Сыграем ещё?");
-            var readLine = Console.ReadLine();
-            return readLine.ToLower() == "да";
+            Console.WriteLine(message);
         }
 
-        private static string WhoIsThis()
+        public string Input()
         {
-            Console.WriteLine("Сдаюсь. Кто это?");
             return Console.ReadLine();
-
         }
 
-        private static void f3()
+        public void Write(string type, int index, string message)
         {
-            oo = o[i];
-            pp = p[i];
-            
-            
-        }
-
-        private static void f4()
-        {
-            i = i*2;
-            if (aa == pp)
+            switch (type)
             {
-                i++;
+                case "b":
+                     b[index] = message;
+                    break;
+                case "o":
+                    o[index]  = message;
+                    break;
+                case "p":
+                    p[index] = message;
+                    break;
             }
         }
 
-        private static bool f6()
+        public string Read(string type, int index)
         {
-           Console.WriteLine(b[i]);
-            aa = Console.ReadLine();
-            if (aa != p[i])
+            switch (type)
             {
-                return true;
+                case "b":
+                    return b[index];
+                    
+                case "o":
+                    return o[index];
+                case "p":
+                    return p[index];
             }
-            return false;
+            return "";
         }
-
-        private static void f10()
-        {
-            o[i] = WhoIsThis();
-            for (int j = 0; j < i-1; j++)
-            {
-                if (o[j] == o[i])
-                {
-                    Console.WriteLine("Нечестно играете!");
-                    return;
-                }
-            }
-            f13();
-        }
-
-        private static void f13()
-        {
-            Console.WriteLine("Задайте альтернативный вопрос, ответив на который сожно отличить " + o[i] + " от " + oo);
-            b[i] = Console.ReadLine();
-            Console.WriteLine("Правильный ответ?");
-            p[i] = Console.ReadLine();
-        }
-
     }
 }
