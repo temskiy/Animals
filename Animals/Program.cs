@@ -9,8 +9,8 @@ namespace Animals
         static string[] o;
         static string[] p;
         private static string oo, pp, aa = "";
-        static int i =0;
-        private static bool _exit = false;
+        static int i;
+        private static bool _exit;
 
         static void Main()
         {
@@ -20,12 +20,15 @@ namespace Animals
 
             do
             {
-                InitGame();
+                i = 0;
+                o[i] = "Кот";
+
                 while (!TryAndWaitAnswer(o[i]))
                 {
                     do
                     {
-                        f3();
+                        oo = o[i];
+                        pp = p[i];
                         if (i == 0)
                         {
                             i = 1;
@@ -33,29 +36,39 @@ namespace Animals
                         }
                         else
                         {
-                            f4();
+                            i = i * 2;
+                            if (aa == pp)
+                            {
+                                i++;
+                            }
                         }
 
                         if (b[i] == null)
                         {
-                            f10();
+                            o[i] = WhoIsThis();
+                            for (int j = 0; j < i - 1; j++)
+                            {
+                                if (o[j] == o[i])
+                                {
+                                    Console.WriteLine("Нечестно играете!");
+                                    return;
+                                }
+                            }
+                            Console.WriteLine("Задайте альтернативный вопрос, ответив на который сожно отличить " + o[i] + " от " + oo);
+                            b[i] = Console.ReadLine();
+                            Console.WriteLine("Правильный ответ?");
+                            p[i] = Console.ReadLine();
                             _exit = true;
                             break;
 
                         }
 
-                    } while (f6());
+                    } while (Ask());
                     if (_exit) { break;}
                 }
                 _exit = false;
 
             } while (TryAgain());
-        }
-
-        private static void InitGame()
-        {
-            i = 0;
-            o[i] = "Кот";
         }
 
         private static bool TryAndWaitAnswer(string animal)
@@ -80,24 +93,8 @@ namespace Animals
 
         }
 
-        private static void f3()
-        {
-            oo = o[i];
-            pp = p[i];
-            
-            
-        }
-
-        private static void f4()
-        {
-            i = i*2;
-            if (aa == pp)
-            {
-                i++;
-            }
-        }
-
-        private static bool f6()
+  
+        private static bool Ask()
         {
            Console.WriteLine(b[i]);
             aa = Console.ReadLine();
@@ -108,27 +105,6 @@ namespace Animals
             return false;
         }
 
-        private static void f10()
-        {
-            o[i] = WhoIsThis();
-            for (int j = 0; j < i-1; j++)
-            {
-                if (o[j] == o[i])
-                {
-                    Console.WriteLine("Нечестно играете!");
-                    return;
-                }
-            }
-            f13();
-        }
-
-        private static void f13()
-        {
-            Console.WriteLine("Задайте альтернативный вопрос, ответив на который сожно отличить " + o[i] + " от " + oo);
-            b[i] = Console.ReadLine();
-            Console.WriteLine("Правильный ответ?");
-            p[i] = Console.ReadLine();
-        }
 
     }
 }
