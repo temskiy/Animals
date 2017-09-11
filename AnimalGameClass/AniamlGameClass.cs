@@ -13,14 +13,24 @@ namespace AnimalGameClass
         string Read(string type, int index);
     }
 
-    public class AniamlGameClass
+    public class AniamlGame
     {
+
+
+
         private int i;
         private bool _exit;
         private string oo, pp, aa = "";
         public IAnimal inter;
+
+        public AniamlGame (IAnimal interAnimal)
+        {
+            inter = interAnimal;
+        }
+
         public void Start()
         {
+            
             do
             {
                 InitGame();
@@ -56,7 +66,7 @@ namespace AnimalGameClass
                                 }
                             }
                             inter.Print(Properties.Resources.alt_q + inter.Read("o", i) + Properties.Resources.ot + oo);
-                            inter.Write("b",i,inter.Input());
+                            inter.Write("b",i, inter.Input());
                             inter.Print(Properties.Resources.right_answer);
                             inter.Write("p",i, inter.Input());
                             _exit = true;
@@ -75,7 +85,8 @@ namespace AnimalGameClass
         private void InitGame()
         {
             i = 0;
-            if (inter.Read("o", i) == "")
+            var ia = inter.Read("o", i);
+            if ((ia == "") || ia == null)
             {
                 inter.Write("o", i, Properties.Resources.initial_animal);
             }
@@ -85,16 +96,14 @@ namespace AnimalGameClass
         private bool TryAndWaitAnswer(string animal)
         {
             inter.Print(Properties.Resources.thisis + animal + Properties.Resources.yea);
-            var readLine = inter.Input();
-            return readLine.ToLower() == Properties.Resources.yes;
+            return inter.Input().ToLower() == Properties.Resources.yes;
 
         }
 
         private bool TryAgain()
         {
             inter.Print(Properties.Resources.play_again);
-            var readLine = inter.Input();
-            return readLine.ToLower() == Properties.Resources.yes;
+            return inter.Input().ToLower() == Properties.Resources.yes;
         }
 
         private string WhoIsThis()
