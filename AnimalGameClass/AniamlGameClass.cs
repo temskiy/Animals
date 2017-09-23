@@ -95,7 +95,7 @@ namespace AnimalGameClass
 
         private bool TryAndWaitAnswer(string animal)
         {
-            inter.Print(Properties.Resources.thisis + animal + Properties.Resources.yea);
+            inter.Print(Properties.Resources.thisis + animal.Trim() + Properties.Resources.yea);
             return inter.Input().ToLower() == Properties.Resources.yes;
 
         }
@@ -115,7 +115,7 @@ namespace AnimalGameClass
 
         private bool ask()
         {
-            inter.Print(inter.Read("b", i));
+            inter.Print(inter.Read("b", i) + " ?");
             aa = inter.Input();
             if (aa != inter.Read("p", i))
             {
